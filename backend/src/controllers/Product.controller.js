@@ -43,12 +43,12 @@ export const getAllProducts = async (req, res) => {
     }
 
     // Price range filters
-    if (req.query.minPrice) {
-      whereClause.price = { ...whereClause.price, [Op.gte]: parseFloat(req.query.minPrice) };
-    }
-    if (req.query.maxPrice) {
-      whereClause.price = { ...whereClause.price, [Op.lte]: parseFloat(req.query.maxPrice) };
-    }
+    // if (req.query.minPrice) {
+    //   whereClause.price = { ...whereClause.price, [Op.gte]: parseFloat(req.query.minPrice) };
+    // }
+    // if (req.query.maxPrice) {
+    //   whereClause.price = { ...whereClause.price, [Op.lte]: parseFloat(req.query.maxPrice) };
+    // }
 
     const { count, rows: products } = await Product.findAndCountAll({
       where: whereClause,

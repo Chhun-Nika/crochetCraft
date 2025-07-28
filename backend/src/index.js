@@ -34,33 +34,6 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/order', orderRoutes);
 
-// // 404 handler for incorrect routes
-// app.all('*', (req, res) => {
-//   res.status(404).json({
-//     message: 'Route not found',
-//     error: `Cannot ${req.method} ${req.originalUrl}`,
-//     availableRoutes: [
-//       'POST /api/auth/register',
-//       'POST /api/auth/login',
-//       'GET /api/user/profile',
-//       'PUT /api/user/profile',
-//       'GET /api/products',
-//       'GET /api/products/:id',
-//       'GET /api/categories',
-//       'GET /api/categories/:id/products',
-//       'POST /api/cart',
-//       'GET /api/cart',
-//       'PUT /api/cart/update/:productId',
-//       'DELETE /api/cart/remove/:productId',
-//       'POST /api/wishlist',
-//       'GET /api/wishlist',
-//       'DELETE /api/wishlist/remove/:productId',
-//       'POST /api/order',
-//       'GET /api/order',
-//       'GET /api/order/:orderId'
-//     ]
-//   });
-// });
 
 // Sync Sequelize models
 sequelize.sync().then(() => {

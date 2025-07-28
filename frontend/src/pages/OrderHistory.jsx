@@ -243,11 +243,11 @@ const OrderHistory = () => {
                   <div className="space-y-3">
                     {selectedOrder.items?.map((item, index) => (
                       <div key={index} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
-                        <img
+                        {/* <img
                           src={item.image_url}
                           alt={item.name}
                           className="w-16 h-16 object-cover rounded"
-                        />
+                        /> */}
                         <div className="flex-1">
                           <h4 className="font-medium text-gray-900">{item.name}</h4>
                           <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
