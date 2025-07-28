@@ -70,7 +70,14 @@ export const CurrencyProvider = ({ children }) => {
   };
 
   const formatCurrency = (amount) => {
-    const convertedAmount = convertCurrency(amount);
+    // Convert to number and handle undefined, null, NaN, or non-numeric
+    const numericAmount = parseFloat(amount);
+    if (isNaN(numericAmount)) {
+      if (currency === 'USD') return '$0.00';
+      if (currency === 'RIELS') return '៛0';
+      return '0.00';
+    }
+    const convertedAmount = convertCurrency(numericAmount);
     
     if (currency === 'USD') {
       return `$${convertedAmount.toFixed(2)}`;

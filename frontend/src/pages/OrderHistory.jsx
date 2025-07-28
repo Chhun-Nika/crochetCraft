@@ -99,16 +99,16 @@ const OrderHistory = () => {
 
       <PageTransition>
         {/* Header */}
-        <div className="bg-white shadow-sm border-b">
+        <div className="bg-white shadow-sm py-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between py-4">
               <div className="flex items-center space-x-4">
-                <button
+                {/* <button
                   onClick={() => navigate('/profile')}
                   className="text-gray-600 hover:text-gray-900 transition-colors"
                 >
                   <FiArrowLeft size={20} />
-                </button>
+                </button> */}
                 <h1 className="text-2xl font-bold text-gray-900">Order History</h1>
               </div>
             </div>

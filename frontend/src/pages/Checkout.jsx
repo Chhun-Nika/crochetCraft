@@ -28,7 +28,7 @@ const Checkout = () => {
     city: '',
     state: '',
     zip_code: '',
-    country: 'United States'
+    country: 'Cambodia'
   });
 
   const [paymentInfo, setPaymentInfo] = useState({
@@ -161,15 +161,37 @@ const Checkout = () => {
   const validatePaymentInfo = () => {
     const errors = {};
     
-    // Match backend validation exactly
-    if (!paymentInfo.card_last_four || paymentInfo.card_last_four.trim() === '') {
-      errors.card_last_four = 'Card last four digits is required';
-    } else if (paymentInfo.card_last_four.trim().length !== 4 || !/^\d{4}$/.test(paymentInfo.card_last_four.trim())) {
-      errors.card_last_four = 'Card last four digits must be 4 numbers';
+    // Validate card number
+    if (!paymentInfo.card_number || paymentInfo.card_number.trim() === '') {
+      errors.card_number = 'Card number is required';
+    } else if (paymentInfo.card_number.replace(/\s/g, '').length < 13 || paymentInfo.card_number.replace(/\s/g, '').length > 19) {
+      errors.card_number = 'Card number must be between 13 and 19 digits';
     }
     
-    if (!paymentInfo.card_type || paymentInfo.card_type.trim() === '') {
-      errors.card_type = 'Card type is required';
+    // Validate card holder name
+    if (!paymentInfo.card_holder || paymentInfo.card_holder.trim() === '') {
+      errors.card_holder = 'Cardholder name is required';
+    }
+    
+    // Validate expiry month
+    if (!paymentInfo.expiry_month || paymentInfo.expiry_month.trim() === '') {
+      errors.expiry_month = 'Expiry month is required';
+    } else if (parseInt(paymentInfo.expiry_month) < 1 || parseInt(paymentInfo.expiry_month) > 12) {
+      errors.expiry_month = 'Expiry month must be between 1 and 12';
+    }
+    
+    // Validate expiry year
+    if (!paymentInfo.expiry_year || paymentInfo.expiry_year.trim() === '') {
+      errors.expiry_year = 'Expiry year is required';
+    } else if (parseInt(paymentInfo.expiry_year) < new Date().getFullYear()) {
+      errors.expiry_year = 'Card has expired';
+    }
+    
+    // Validate CVV
+    if (!paymentInfo.cvv || paymentInfo.cvv.trim() === '') {
+      errors.cvv = 'CVV is required';
+    } else if (paymentInfo.cvv.length < 3 || paymentInfo.cvv.length > 4) {
+      errors.cvv = 'CVV must be 3 or 4 digits';
     }
 
     setFormErrors(errors);
@@ -214,10 +236,12 @@ const Checkout = () => {
     try {
       // Validate all forms before proceeding
       const isShippingValid = validateShippingInfo();
-      const isPaymentValid = validatePaymentInfo();
+      
+      // For payment validation, check if we have the processed payment info
+      const isPaymentValid = paymentInfo.card_last_four && paymentInfo.card_type;
       
       if (!isShippingValid || !isPaymentValid) {
-        setError('Please fill in all required fields correctly.');
+        setError('Please complete all checkout steps before placing your order.');
         return;
       }
 
@@ -554,7 +578,7 @@ const Checkout = () => {
                         onChange={(e) => handleInputChange('shipping', 'country', e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
-                        <option value="United States">United States</option>
+                        <option value="Cambodia">Cambodia</option>
                         <option value="Canada">Canada</option>
                         <option value="United Kingdom">United Kingdom</option>
                         <option value="Australia">Australia</option>
