@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/* Custom animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRightSlow {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideOutToTop {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes quantityUpdate {
+  0% {
+    transform: scale(1);
+    color: inherit;
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    color: #2563eb;
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    color: inherit;
+    opacity: 1;
+  }
+}
+
+@keyframes smoothQuantityTransition {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    color: inherit;
+  }
+  25% {
+    transform: scale(1.05) translateY(-2px);
+    opacity: 0.9;
+    color: #2563eb;
+  }
+  50% {
+    transform: scale(1.1) translateY(-4px);
+    opacity: 0.7;
+    color: #1d4ed8;
+  }
+  75% {
+    transform: scale(1.05) translateY(-2px);
+    opacity: 0.9;
+    color: #2563eb;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    color: inherit;
+  }
+}
+
+@keyframes smoothQuantityChange {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  51% {
+    transform: translateY(10px);
+    opacity: 0;
+
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+  50% {
+    transform: scale(0.95);
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  100% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+}
+
+@keyframes gradient-move {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradient-move 12s ease-in-out infinite;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-slideInRightSlow {
+  animation: slideInRightSlow 0.8s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+.animate-slideInFromTop {
+  animation: slideInFromTop 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+
+.animate-slideOutToTop {
+  animation: slideOutToTop 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+
+.animate-buttonPulse {
+  animation: buttonPulse 0.3s ease-in-out;
+}
+
+.animate-quantityUpdate {
+  animation: quantityUpdate 0.4s ease-out;
+}
+
+.animate-smoothQuantityTransition {
+  animation: smoothQuantityTransition 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.animate-smoothQuantityChange {
+  animation: smoothQuantityChange 0.5s ease-in-out;
+}
+
+.animate-buttonPress {
+  animation: buttonPress 0.3s ease-out;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
